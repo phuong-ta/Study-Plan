@@ -1,0 +1,40 @@
+# Project: Study_Plan
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o DataHandler/addClass.o DataHandler/createDB.o DataHandler/showClass.o DataHandler/removeClass.o
+LINKOBJ  = main.o DataHandler/addClass.o DataHandler/createDB.o DataHandler/showClass.o DataHandler/removeClass.o
+LIBS     = -L"C:/Installer/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Installer/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Installer/Dev-Cpp/TDM-GCC-64/include" -I"C:/Installer/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Installer/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"C:/Installer/Dev-Cpp/TDM-GCC-64/include" -I"C:/Installer/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Installer/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Installer/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = Study_Plan.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+DEL      = C:\Installer\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+DataHandler/addClass.o: DataHandler/addClass.c
+	$(CC) -c DataHandler/addClass.c -o DataHandler/addClass.o $(CFLAGS)
+
+DataHandler/createDB.o: DataHandler/createDB.c
+	$(CC) -c DataHandler/createDB.c -o DataHandler/createDB.o $(CFLAGS)
+
+DataHandler/showClass.o: DataHandler/showClass.c
+	$(CC) -c DataHandler/showClass.c -o DataHandler/showClass.o $(CFLAGS)
+
+DataHandler/removeClass.o: DataHandler/removeClass.c
+	$(CC) -c DataHandler/removeClass.c -o DataHandler/removeClass.o $(CFLAGS)
